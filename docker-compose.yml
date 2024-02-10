@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    hostname: mysql
+    container_name: banco-mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: banco
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
