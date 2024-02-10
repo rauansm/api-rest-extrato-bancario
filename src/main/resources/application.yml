@@ -12,4 +12,4 @@ spring:
 
   spring:
     flyway:
-      locations=classpath: db/migration
+      locations: classpath:db/migration,classpath:db/testdata
