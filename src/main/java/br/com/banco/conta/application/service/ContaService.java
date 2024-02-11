@@ -5,4 +5,6 @@ import br.com.banco.conta.application.api.ContaResponse;
 
 public interface ContaService {
     ContaResponse criaConta(ContaRequest contaRequest);
+
+    ContaResponse buscaContaPeloId(Long idConta);
 }

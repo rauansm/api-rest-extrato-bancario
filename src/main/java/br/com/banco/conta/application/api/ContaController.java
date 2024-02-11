@@ -18,4 +18,12 @@ public class ContaController implements ContaAPI{
         log.info("[finaliza] ContaController - criaConta");
         return contaCriada;
     }
+
+    @Override
+    public ContaResponse buscaContaPeloId(Long idConta) {
+        log.info("[inicia] ContaController - buscaContaPeloId");
+        ContaResponse conta = contaService.buscaContaPeloId(idConta);
+        log.info("[finaliza] ContaController - buscaContaPeloId");
+        return conta;
+    }
 }

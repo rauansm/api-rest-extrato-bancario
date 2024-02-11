@@ -12,4 +12,8 @@ public interface ContaAPI {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     ContaResponse criaConta (@Valid @RequestBody ContaRequest contaRequest);
+
+    @GetMapping("/{idConta}")
+    @ResponseStatus(code = HttpStatus.OK)
+    ContaResponse buscaContaPeloId (@PathVariable Long idConta);
 }

@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @Log4j2
 @RequiredArgsConstructor
@@ -17,5 +19,13 @@ public class ContaInfraRepository implements ContaRepository {
         contaSpringDataJPA.save(conta);
         log.info("[finaliza] ContaInfraRepository - salva");
         return conta;
+    }
+
+    @Override
+    public Conta buscaContaPeloId(Long idConta) {
+        log.info("[inicia] ContaInfraRepository - buscaContaPeloId");
+        Optional<Conta> conta = contaSpringDataJPA.findById(idConta);
+        log.info("[finaliza] ContaInfraRepository - buscaContaPeloId");
+        return conta.orElseThrow(() -> new RuntimeException("Nenhuma conta encontrada!"));
     }
 }

@@ -20,4 +20,12 @@ public class ContaApplicationService implements ContaService{
         log.info("[finaliza] ContaApplicationService - criaConta");
         return new ContaResponse(conta);
     }
+
+    @Override
+    public ContaResponse buscaContaPeloId(Long idConta) {
+        log.info("[inicia] ContaApplicationService - buscaContaPeloId");
+        Conta conta = contaRepository.buscaContaPeloId(idConta);
+        log.info("[finaliza] ContaApplicationService - buscaContaPeloId");
+        return new ContaResponse(conta);
+    }
 }
