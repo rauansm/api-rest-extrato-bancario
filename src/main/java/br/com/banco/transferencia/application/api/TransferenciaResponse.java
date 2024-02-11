@@ -7,6 +7,8 @@ import lombok.Value;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 public class TransferenciaResponse {
@@ -25,5 +27,11 @@ public class TransferenciaResponse {
         this.tipo = transferencia.getTipo();
         this.nomeOperadorTransacao = transferencia.getNomeOperadorTransacao();
         this.conta = transferencia.getConta();
+    }
+
+    public static List<TransferenciaResponse> converte(List<Transferencia> transferencias) {
+        return transferencias.stream()
+                .map(TransferenciaResponse::new)
+                .collect(Collectors.toList());
     }
 }
