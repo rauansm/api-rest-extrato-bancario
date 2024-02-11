@@ -1,6 +1,8 @@
 package br.com.banco.conta.domain;
 
+import br.com.banco.conta.application.api.ContaRequest;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,4 +18,8 @@ public class Conta {
     @Column(columnDefinition = "bigint", name = "id_conta", updatable = false, unique = true, nullable = false)
     private Long idConta;
     private String nomeResponsavel;
+
+    public Conta(ContaRequest contaRequest) {
+        this.nomeResponsavel = contaRequest.getNomeResponsavel();
+    }
 }
