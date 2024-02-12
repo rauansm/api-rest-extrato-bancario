@@ -2,6 +2,7 @@ package br.com.banco.conta.infra;
 
 import br.com.banco.conta.application.repository.ContaRepository;
 import br.com.banco.conta.domain.Conta;
+import br.com.banco.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
@@ -26,6 +27,6 @@ public class ContaInfraRepository implements ContaRepository {
         log.info("[inicia] ContaInfraRepository - buscaContaPeloId");
         Optional<Conta> conta = contaSpringDataJPA.findById(idConta);
         log.info("[finaliza] ContaInfraRepository - buscaContaPeloId");
-        return conta.orElseThrow(() -> new RuntimeException("Nenhuma conta encontrada!"));
+        return conta.orElseThrow(() -> APIException.entidadeNaoEncontrada(String.format("Conta com id %s não encontrada.", idConta)));
     }
 }
