@@ -4,9 +4,9 @@ import br.com.banco.filtro.TransacoesFiltro;
 import br.com.banco.transferencia.application.service.TransferenciaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @Log4j2
@@ -18,16 +18,16 @@ public class TransferenciaController implements TransferenciaAPI {
     @Override
     public TransferenciaResponse realizaTransacao(TransferenciaRequest transferenciaRequest) {
         log.info("[inicia] TransferenciaController - realizaTransacao");
-        TransferenciaResponse transferencia = transferenciaService.realizaTransacao(transferenciaRequest);
+        TransferenciaResponse transacao = transferenciaService.realizaTransacao(transferenciaRequest);
         log.info("[finaliza] TransferenciaController - realizaTransacao");
-        return transferencia;
+        return transacao;
     }
 
     @Override
-    public List<TransferenciaResponse> pesquisaTransacoes(Long idConta, TransacoesFiltro filtro) {
+    public Page<TransferenciaResponse> pesquisaTransacoes(Long idConta, TransacoesFiltro filtro, Pageable pageable) {
         log.info("[inicia] TransferenciaController - pesquisaTransacoes");
-        List<TransferenciaResponse> pesquisa = transferenciaService.pesquisaTransacoes(idConta, filtro);
+        Page<TransferenciaResponse> transacoes = transferenciaService.pesquisaTransacoes(idConta, filtro, pageable);
         log.info("[finaliza] TransferenciaController - pesquisaTransacoes");
-        return pesquisa;
+        return transacoes;
     }
 }

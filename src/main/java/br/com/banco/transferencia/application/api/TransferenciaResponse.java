@@ -4,6 +4,7 @@ import br.com.banco.conta.domain.Conta;
 import br.com.banco.transferencia.domain.Tipo;
 import br.com.banco.transferencia.domain.Transferencia;
 import lombok.Value;
+import org.springframework.data.domain.Page;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -29,8 +30,8 @@ public class TransferenciaResponse {
         this.conta = transferencia.getConta();
     }
 
-    public static List<TransferenciaResponse> converte(List<Transferencia> transferencias) {
-        return transferencias.stream()
+    public static List<TransferenciaResponse> converte(Page<Transferencia> transacoes) {
+        return transacoes.stream()
                 .map(TransferenciaResponse::new)
                 .collect(Collectors.toList());
     }
