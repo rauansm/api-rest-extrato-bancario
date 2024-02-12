@@ -16,17 +16,17 @@ public class TransferenciaController implements TransferenciaAPI {
     private final TransferenciaService transferenciaService;
 
     @Override
-    public TransferenciaResponse realizaTransacao(TransferenciaRequest transferenciaRequest) {
+    public TransacaoResponse realizaTransacao(TransacaoRequest transacaoRequest) {
         log.info("[inicia] TransferenciaController - realizaTransacao");
-        TransferenciaResponse transacao = transferenciaService.realizaTransacao(transferenciaRequest);
+        TransacaoResponse transacao = transferenciaService.realizaTransacao(transacaoRequest);
         log.info("[finaliza] TransferenciaController - realizaTransacao");
         return transacao;
     }
 
     @Override
-    public Page<TransferenciaResponse> pesquisaTransacoes(Long idConta, TransacoesFiltro filtro, Pageable pageable) {
+    public Page<TransacaoResponse> pesquisaTransacoes(Long idConta, TransacoesFiltro filtro, Pageable pageable) {
         log.info("[inicia] TransferenciaController - pesquisaTransacoes");
-        Page<TransferenciaResponse> transacoes = transferenciaService.pesquisaTransacoes(idConta, filtro, pageable);
+        Page<TransacaoResponse> transacoes = transferenciaService.pesquisaTransacoes(idConta, filtro, pageable);
         log.info("[finaliza] TransferenciaController - pesquisaTransacoes");
         return transacoes;
     }

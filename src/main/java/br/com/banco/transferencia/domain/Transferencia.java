@@ -1,7 +1,7 @@
 package br.com.banco.transferencia.domain;
 
 import br.com.banco.conta.domain.Conta;
-import br.com.banco.transferencia.application.api.TransferenciaRequest;
+import br.com.banco.transferencia.application.api.TransacaoRequest;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 
 @Entity
@@ -32,10 +31,10 @@ public class Transferencia {
     @JoinColumn(name = "conta_id")
     private Conta conta;
 
-    public Transferencia(TransferenciaRequest transferenciaRequest, Conta conta) {
-        this.valor = transferenciaRequest.getValor();
-        this.tipo = transferenciaRequest.getTipo();
-        this.nomeOperadorTransacao = conta.getNomeResponsavel();
+    public Transferencia(TransacaoRequest transacaoRequest, Conta conta) {
+        this.valor = transacaoRequest.getValor();
+        this.tipo = transacaoRequest.getTipo();
+        this.nomeOperadorTransacao = transacaoRequest.getNomeOperadorTransacao();
         this.conta = conta;
     }
 }

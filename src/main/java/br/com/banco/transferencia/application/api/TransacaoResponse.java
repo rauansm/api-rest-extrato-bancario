@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Value
-public class TransferenciaResponse {
+public class TransacaoResponse {
 
     private Long idTransferencia;
     private OffsetDateTime dataTransferencia;
@@ -21,18 +21,18 @@ public class TransferenciaResponse {
     private String nomeOperadorTransacao;
     private Conta conta;
 
-    public TransferenciaResponse(Transferencia transferencia) {
-        this.idTransferencia = transferencia.getIdTransferencia();
-        this.dataTransferencia = transferencia.getDataTransferencia();
-        this.valor = transferencia.getValor();
-        this.tipo = transferencia.getTipo();
-        this.nomeOperadorTransacao = transferencia.getNomeOperadorTransacao();
-        this.conta = transferencia.getConta();
+    public TransacaoResponse(Transferencia transacao) {
+        this.idTransferencia = transacao.getIdTransferencia();
+        this.dataTransferencia = transacao.getDataTransferencia();
+        this.valor = transacao.getValor();
+        this.tipo = transacao.getTipo();
+        this.nomeOperadorTransacao = transacao.getNomeOperadorTransacao();
+        this.conta = transacao.getConta();
     }
 
-    public static List<TransferenciaResponse> converte(Page<Transferencia> transacoes) {
+    public static List<TransacaoResponse> converte(Page<Transferencia> transacoes) {
         return transacoes.stream()
-                .map(TransferenciaResponse::new)
+                .map(TransacaoResponse::new)
                 .collect(Collectors.toList());
     }
 }

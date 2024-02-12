@@ -3,8 +3,8 @@ package br.com.banco.transferencia.application.service;
 import br.com.banco.conta.application.repository.ContaRepository;
 import br.com.banco.conta.domain.Conta;
 import br.com.banco.filtro.TransacoesFiltro;
-import br.com.banco.transferencia.application.api.TransferenciaRequest;
-import br.com.banco.transferencia.application.api.TransferenciaResponse;
+import br.com.banco.transferencia.application.api.TransacaoRequest;
+import br.com.banco.transferencia.application.api.TransacaoResponse;
 import br.com.banco.transferencia.application.repository.TransferenciaRepository;
 import br.com.banco.transferencia.domain.Transferencia;
 import lombok.RequiredArgsConstructor;
@@ -25,20 +25,20 @@ public class TransferenciaApplicationService implements  TransferenciaService {
     private final ContaRepository contaRepository;
 
     @Override
-    public TransferenciaResponse realizaTransacao(TransferenciaRequest transferenciaRequest) {
+    public TransacaoResponse realizaTransacao(TransacaoRequest transacaoRequest) {
         log.info("[inicia] TransferenciaApplicationService - realizaTransacao");
-        Conta conta = contaRepository.buscaContaPeloId(transferenciaRequest.getIdConta());
-        Transferencia transferencia = transferenciaRepository.salva(new Transferencia(transferenciaRequest, conta));
+        Conta conta = contaRepository.buscaContaPeloId(transacaoRequest.getIdConta());
+        Transferencia transacao = transferenciaRepository.salva(new Transferencia(transacaoRequest, conta));
         log.info("[finaliza] TransferenciaApplicationService - realizaTransacao");
-        return new TransferenciaResponse(transferencia);
+        return new TransacaoResponse(transacao);
     }
 
     @Override
-    public Page<TransferenciaResponse> pesquisaTransacoes(Long idConta, TransacoesFiltro filtro, Pageable pageable) {
+    public Page<TransacaoResponse> pesquisaTransacoes(Long idConta, TransacoesFiltro filtro, Pageable pageable) {
         log.info("[inicia] TransferenciaApplicationService - pesquisaTransacoes");
         Page<Transferencia> transacoes = transferenciaRepository.pesquisaTransacoes(idConta, filtro, pageable);
-        List<TransferenciaResponse> transacoesListResponse = TransferenciaResponse.converte(transacoes);
-        Page<TransferenciaResponse> transacoesPageResponse = new PageImpl<>(transacoesListResponse, pageable, transacoes.getTotalElements());
+        List<TransacaoResponse> transacoesListResponse = TransacaoResponse.converte(transacoes);
+        Page<TransacaoResponse> transacoesPageResponse = new PageImpl<>(transacoesListResponse, pageable, transacoes.getTotalElements());
         log.info("[finaliza] TransferenciaApplicationService - pesquisaTransacoes");
         return transacoesPageResponse;
     }
