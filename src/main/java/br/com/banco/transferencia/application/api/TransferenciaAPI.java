@@ -21,4 +21,5 @@ public interface TransferenciaAPI {
     Page<TransacaoResponse> pesquisaTransacoes (@PathVariable Long idConta, TransacoesFiltro filtro,
                                                     Pageable pageable);
 
+
 }

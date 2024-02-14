@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -41,5 +42,14 @@ public class TransferenciaApplicationService implements  TransferenciaService {
         Page<TransacaoResponse> transacoesPageResponse = new PageImpl<>(transacoesListResponse, pageable, transacoes.getTotalElements());
         log.info("[finaliza] TransferenciaApplicationService - pesquisaTransacoes");
         return transacoesPageResponse;
+    }
+
+    @Override
+    public BigDecimal buscaSaldoTotalDaConta(Long idConta) {
+        log.info("[inicia] TransferenciaApplicationService - buscaSaldoTotalDaConta");
+        Conta conta = contaRepository.buscaContaPeloId(idConta);
+        BigDecimal saldoTotal = transferenciaRepository.buscaSaldoTotalDaConta(conta.getIdConta());
+        log.info("[finaliza] TransferenciaApplicationService - buscaSaldoTotalDaConta");
+        return saldoTotal;
     }
 }
