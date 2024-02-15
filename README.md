@@ -2,8 +2,7 @@
 
 Utilizei o JasperReports para realizar a emissão do extrato em PDF atraves do codigo Java.
 
-<a href="https://postimg.cc/87nYczC5"><img src="https://i.postimg.cc/pd2M09bD/extrato-bancario-desafio.png" width="500"></a>
-
+<img src="https://i.postimg.cc/76RktJRt/extrato-bancario-desafio.png"  width="500">
 
 ## Descrição
 Este teste consiste em construir uma camada de serviço, para uma operação muito realizada em bancos, para emissão de extrato bancário.
@@ -52,3 +51,7 @@ Após isso execute o comando:
 - Utilizar o padrão RESTFul para a construção da sua API.
 - Existe um script sql no pacote resources que cotém a modelagem do banco que pode ser seguida, e valores iniciais.
 - Caso julge necessário você poderá criar mais tablas, porém a estrutura inicial não deve ser alterada.
+- Lombok
+- FlywayDB
+- JasperReports
+- Docker
