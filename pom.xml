@@ -15,6 +15,8 @@
 	<description>API Rest para gerenciamento de extratos bancários</description>
 	<properties>
 		<java.version>11</java.version>
+		<jasperreports.version>6.21.0</jasperreports.version>
+		<spring-doc.version>1.6.1</spring-doc.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -48,6 +50,22 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>${jasperreports.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-functions</artifactId>
+			<version>${jasperreports.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${spring-doc.version}</version>
 		</dependency>
 	</dependencies>
 

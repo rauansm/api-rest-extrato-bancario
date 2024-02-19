@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Repository
 @Log4j2
@@ -33,5 +33,12 @@ public class TransferenciaInfraRepository implements TransferenciaRepository {
                 TransferenciaSpecs.usandoFiltro(idConta,filtro), pageable);
         log.info("[finaliza] TransferenciaInfraRepository - pesquisaTransacoes");
         return transferencias;
+    }
+    @Override
+    public BigDecimal buscaSaldoTotalDaConta(Long idConta) {
+        log.info("[inicia] TransferenciaInfraRepository - buscaSaldoTotalDaConta");
+        BigDecimal saldoTotal = transferenciaSpringDataJPA.findbuscaSaldoTotalDaContaContaByIdConta(idConta);
+        log.info("[finaliza] TransferenciaInfraRepository - buscaSaldoTotalDaConta");
+        return saldoTotal;
     }
 }

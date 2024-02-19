@@ -5,10 +5,12 @@ import br.com.banco.transferencia.domain.Transferencia;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 public interface TransferenciaRepository {
     Transferencia salva(Transferencia transferencia);
 
     Page<Transferencia> pesquisaTransacoes(Long idConta, TransacoesFiltro filtro, Pageable pageable);
+
+    BigDecimal buscaSaldoTotalDaConta (Long idConta);
 }
